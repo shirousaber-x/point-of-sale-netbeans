@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.netsprogram.covidstatistic.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.netsprogram.covidstatistic.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/continent_to_country"
+            app:destination="@id/listCountry" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCountry"
+        android:name="com.netsprogram.covidstatistic.ui.dashboard.ListCountry"
+        android:label="activity list country"
+        tools:layout="@layout/activity_list_country" >
+        <argument
+            android:name="namaContinent"
+            app:argType="string" />
+        <action
+            android:id="@+id/listCountryToCountryCovidDetail"
+            app:destination="@id/country_covid_detail" />
+    </fragment>
+
+    <activity
+        android:id="@+id/country_covid_detail"
+        android:name="com.netsprogram.covidstatistic.ui.dashboard.CountryCovidDetail"
+        android:label="activity country covid detail"
+        tools:layout="@layout/activity_country_covid_detail">
+
+        <argument
+            android:name="country_name"
+            app:argType="string" />
+
+        <argument
+            android:name="country_flag"
+            app:argType="string" />
+
+    </activity>
+
+
+</navigation>
